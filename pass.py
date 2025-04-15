@@ -52,7 +52,7 @@ def login():
       st.image("pages/image.png", caption="Grocery Management", use_container_width=True)
       with st.sidebar:
         
-        tab1, tab2, tab3, tab4 = st.tabs(["Login", "Register", "Forgot Password","Login with Google"])
+        tab1, tab2, tab3 = st.tabs(["Login", "Register", "Forgot Password"])
 
         with tab1:
           st.markdown("Login Screen", help="username and password are case sensitive")
@@ -75,6 +75,15 @@ def login():
           new_value1 = pwd.encode('utf-8')
       
           if st.button("Login"):
+                     
+                      st.button(":rainbow[Login with google]", on_click=st.login, key=5, use_container_width=True,help="Click to login with your google account")
+          
+                      if st.experimental_user.is_logged_in:
+                          st.session_state.logged_in = True
+            
+                          st.success("Login Successful")
+                          st.rerun()
+                          
               if not userid or not pwd:
                 st.warning("Ensure mandatory fields are filled.")
                 
@@ -213,14 +222,7 @@ def login():
               if not found:
                 st.error("User id not found")
                     
-        with tab4:
-          st.button(":rainbow[Login with google]", on_click=st.login, key=5, use_container_width=True,help="Click to login with your google account")
-          
-          if st.experimental_user.is_logged_in:
-              st.session_state.logged_in = True
 
-              st.success("Login Successful")
-              st.rerun()
               
 st.markdown("""
 <style>
