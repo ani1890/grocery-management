@@ -71,7 +71,7 @@ def login():
                st.session_state.logged_in = True
     
                st.success("Login Successful")
-               st.rerun()
+              
       
           scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
           credentials_dict = st.secrets["service_account"]
