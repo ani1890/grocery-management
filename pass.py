@@ -246,7 +246,7 @@ dashboard = st.Page(
 
 
 
-if st.session_state.logged_in:
+if st.session_state.logged_in or st.experimental_user.is_logged_in:
     pg = st.navigation(
         {
             "Account": [logout_page],
