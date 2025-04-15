@@ -66,6 +66,13 @@ def login():
           sheet = client.open("user_account_grocery_app").sheet1
           userid = st.text_input("Username", key="1")
           pwd = st.text_input("Password", type="password", key="2")
+          st.button(":rainbow[Login with google]", on_click=st.login, key=5,help="Click to login with your google account")
+  
+              if st.experimental_user.is_logged_in:
+                  st.session_state.logged_in = True
+    
+                  st.success("Login Successful")
+                  st.rerun()
       
           scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
           credentials_dict = st.secrets["service_account"]
@@ -75,14 +82,6 @@ def login():
           new_value1 = pwd.encode('utf-8')
       
           if st.button("Login"):
-                     
-              st.button(":rainbow[Login with google]", on_click=st.login, key=5,help="Click to login with your google account")
-  
-              if st.experimental_user.is_logged_in:
-                  st.session_state.logged_in = True
-    
-                  st.success("Login Successful")
-                  st.rerun()
                           
               if not userid or not pwd:
                 st.warning("Ensure mandatory fields are filled.")
