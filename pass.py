@@ -76,7 +76,7 @@ def login():
       
           if st.button("Login"):
                      
-              st.button(":rainbow[Login with google]", on_click=st.login, key=5, use_container_width=True,help="Click to login with your google account")
+              st.button(":rainbow[Login with google]", on_click=st.login, key=5,help="Click to login with your google account")
   
               if st.experimental_user.is_logged_in:
                   st.session_state.logged_in = True
